@@ -1,0 +1,29 @@
+# Build the complete modified HTML file
+# First, read all 5 parts
+parts = []
+for i in range(1, 6):
+    with open(f'/mnt/agents/upload/Deutschwebsite-Part{i}.txt', 'r', encoding='utf-8') as f:
+        parts.append(f.read())
+
+# Extract HTML from each part
+import re
+html_parts = []
+for part in parts:
+    match = re.search(r"part\d+ = '''(.*?)'''", part, re.DOTALL)
+    if match:
+        html_parts.append(match.group(1))
+
+full_html = ''.join(html_parts)
+print(f"Total length: {len(full_html)} chars")
+
+# 1. Remove random letter icons from biography cards
+full_html = re.sub(r'<span class="icon">[WFMEH]</span>\s*', '', full_html)
+
+# 2. Remove random letter icons from analysis cards
+full_html = re.sub(r'<span class="icon">[WFISD]</span>\s*', '', full_html)
+
+# 3. Remove Zentralbibliothek Zuerich from sources
+full_html = full_html.replace('Zentralbibliothek Zuerich, ', '')
+full_html = full_html.replace(', Zentralbibliothek Zuerich', '')
+
+print("Basic replacements done")

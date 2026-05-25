@@ -1,0 +1,447 @@
+# Now replace the Abendlied section
+start_marker = '<!-- ABENDLIED -->'
+end_marker = '<!-- QUIZ -->'
+
+start_idx = full_html.find(start_marker)
+end_idx = full_html.find(end_marker)
+
+before = full_html[:start_idx]
+after = full_html[end_idx:]
+
+# Build the new Abendlied section with verse-by-verse analysis
+new_abendlied = '''    <!-- ABENDLIED -->
+    <section id="abendlied" class="section">
+        <div class="poem-split">
+            <div class="poem-left">
+                <h3 class="poem-left-title">Abendlied</h3>
+                <p class="poem-left-author">Gottfried Keller . 1879</p>
+                
+                <div class="poem-text">
+                    <div class="poem-stanza" data-stanza="1" onclick="highlightStanza(1)" onmouseenter="highlightStanza(1)" onmouseleave="clearHighlight()">
+                        <span class="poem-stanza-num">1</span><br>
+                        Augen, meine lieben Fensterlein,<br>
+                        Gebt mir schon so lange holden Schein,<br>
+                        Lasset freundlich Bild um Bild herein:<br>
+                        Einmal werdet ihr verdunkelt sein!
+                    </div>
+                    <div class="poem-stanza" data-stanza="2" onclick="highlightStanza(2)" onmouseenter="highlightStanza(2)" onmouseleave="clearHighlight()">
+                        <span class="poem-stanza-num">2</span><br>
+                        Fallen einst die mueden Lider zu,<br>
+                        Loescht ihr aus, dann hat die Seele Ruh;<br>
+                        Tastend streift sie ab die Wanderschuh',<br>
+                        Legt sich auch in ihre finstre Truh'.
+                    </div>
+                    <div class="poem-stanza" data-stanza="3" onclick="highlightStanza(3)" onmouseenter="highlightStanza(3)" onmouseleave="clearHighlight()">
+                        <span class="poem-stanza-num">3</span><br>
+                        Noch zwei Fuenklein sieht sie glimmend stehn,<br>
+                        Wie zwei Sternlein innerlich zu sehn,<br>
+                        Bis sie schwanken und dann auch vergehn,<br>
+                        Wie von eines Falters Fluegelwehn.
+                    </div>
+                    <div class="poem-stanza" data-stanza="4" onclick="highlightStanza(4)" onmouseenter="highlightStanza(4)" onmouseleave="clearHighlight()">
+                        <span class="poem-stanza-num">4</span><br>
+                        Doch noch wandl' ich auf dem Abendfeld,<br>
+                        Nur dem sinkenden Gestirn gesellt;<br>
+                        Trinkt, o Augen, was die Wimper haelt,<br>
+                        Von dem goldnen Ueberfluss der Welt!
+                    </div>
+                </div>
+            </div>
+
+            <div class="poem-right">
+                <div class="section-header" style="margin-bottom: 2rem;">
+                    <h2 style="font-size: 2rem;">Abendlied - Gedichtanalyse</h2>
+                </div>
+
+                <div class="analysis-card" id="card-intro">
+                    <h4>Warum dieses Gedicht?</h4>
+                    <p>
+                        <strong>Entstehungsjahr:</strong> 1879 - in Kellers spaeten Jahren als freier Schriftsteller
+                    </p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>Beweggrund:</strong> Keller schrieb das Gedicht im Alter von 60 Jahren. Er hatte den Tod vieler geliebter Menschen erlebt 
+                        (Vater frueh, Geschwister, Verlobte 1866) und stand selbst im Abend seines Lebens. Das Gedicht reflektiert seine reife 
+                        Auseinandersetzung mit der eigenen Vergaenglichkeit - nicht als Furcht, sondern als gelassene Akzeptanz.
+                    </p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>Zeitlicher Kontext:</strong> Nach seinem Ruecktritt als Staatsschreiber (1876) lebte Keller als freier Schriftsteller in Zuerich. 
+                        Diese Phase war produktiv, aber auch von Krankheit und Einsamkeit gepraegt. Das Abendlied ist typisch fuer seine spaete Lyrik: 
+                        meditativ, naturverbunden und trotz des Todenkmals lebensbejahend.
+                    </p>
+                </div>
+
+                <div class="analysis-card" id="card-form">
+                    <h4>Aeussere Form</h4>
+                    <ul>
+                        <li><strong>Textsorte:</strong> Lyrik, klassisches Gedicht / Liedform</li>
+                        <li><strong>Strophen:</strong> 4 Strophen a 4 Verse (16 Verse insgesamt)</li>
+                        <li><strong>Metrum:</strong> Vierhebiger Jambus</li>
+                        <li><strong>Silbenzahl:</strong> Jeweils 9 Silben pro Vers</li>
+                        <li><strong>Kadenz:</strong> Maennliche Kadenz (betonte Endsilbe)</li>
+                        <li><strong>Reimschema:</strong> Haufenreim (aaaa / bbbb / cccc / dddd)</li>
+                        <li><strong>Epoche:</strong> Realismus (mit romantischen Elementen)</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        Der Haufenreim erzeugt einen harmonischen, fast hymnischen Klang. 
+                        Die regelmaessige Form spiegelt die Gelassenheit wider, mit der der Sprecher dem Tod entgegensieht.
+                    </p>
+                </div>
+
+                <div class="analysis-card" id="card-style">
+                    <h4>Sprachlich-stilistische Besonderheiten</h4>
+                    
+                    <p style="margin-bottom: 1rem;"><strong>Wortwahl:</strong></p>
+                    <ul>
+                        <li>Bildhaft und poetisch, einfach verstaendlich</li>
+                        <li>Naturbezogen, sanft/weich klingend</li>
+                        <li>Schlichte Alltagssprache</li>
+                    </ul>
+
+                    <p style="margin: 1rem 0;"><strong>Satzbau:</strong></p>
+                    <ul>
+                        <li>Kurze bis mittellange Saetze</li>
+                        <li>Aussagesaetze, parataktischer Stil</li>
+                        <li>Wenige Nebensaetze, mehr Zeilenstil als Enjambements</li>
+                    </ul>
+
+                    <p style="margin: 1rem 0;"><strong>Stilfiguren (uebergreifend):</strong></p>
+                    <ul>
+                        <li><strong>Metaphern:</strong> Augen = Fensterlein (Wahrnehmung, Seele); Tod = Nacht (Uebergang, Ruhe); Leben = Wanderung (Wanderschuh); Bewusstsein = Fuenklein (letzte Lebensenergie); Sterben = verloeschen (wie ein Licht)</li>
+                        <li><strong>Vergleich:</strong> Funken wie Sternlein -> Romantisierung, Zartheit</li>
+                        <li><strong>Symbolik:</strong> Abend = Lebensabend; Nacht = Tod; Sonne = Leben; Falter = Zerbrechlichkeit</li>
+                        <li><strong>Diminutive:</strong> ...-lein (Fensterlein, Fuenklein, Sternlein) -> Verkleinerungsformen fuer Zaertlichkeit</li>
+                        <li><strong>Euphemismus:</strong> Der Tod wird verharmlost (Lider fallen, Seele hat Ruh)</li>
+                        <li><strong>Hyperbel:</strong> zwei Fuenklein - poetische Ueberhoehung der Augen</li>
+                        <li><strong>Inversionen & Archaismen:</strong> Voranstellung von Satzteilen, veraltete Wortformen</li>
+                    </ul>
+                </div>
+
+                <!-- STROPHE 1 ANALYSE -->
+                <div class="analysis-card" id="card-strophe1" data-stanza="1">
+                    <h4>Strophe 1 - Vers-fuer-Vers-Analyse</h4>
+                    
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Augen, meine lieben Fensterlein,"
+                        </p>
+                        <p><strong>Anapher / Apostrophe:</strong> Das lyrische Ich wendet sich direkt an seine eigenen Augen - eine innige, vertraute Anrede. Das Komma nach "Augen" erzeugt einen kleinen Atempause, als wuerde man einen geliebten Menschen ansprechen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Metapher:</strong> "Fensterlein" - Die Augen werden zu kleinen Fenstern. Sie sind die Oeffnung, durch die die Seele die Welt wahrnimmt. Das Diminutiv (-lein) drueckt Zaertlichkeit und Vertrautheit aus.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Diminutiv</em> (Verkleinerungsform) - Das -lein verleiht dem Bild eine innige, fast kindliche Warme. Es ist keine klinische Beschreibung, sondern eine liebevolle Anrede.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Gebt mir schon so lange holden Schein,"
+                        </p>
+                        <p><strong>Zeitliche Dimension:</strong> "schon so lange" - Das Ich blickt zurueck auf ein ganzes Leben voller Sehen und Wahrnehmen. Es ist eine Dankesbekundung fuer Jahrzehnte des Sehens.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Adjektiv "hold":</strong> Ein veraltetes, poetisches Wort fuer lieblich, freundlich, schoen. Es verleiht dem Schein eine warme, goldene Qualitaet - nicht grell, sondern mild und einladend.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Alliteration</em> (Sch-alliteration) - "schon so lange" erzeugt einen weichen, fliessenden Klang, der die Dauer und Kontinuitaet des Lebens unterstreicht.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Lasset freundlich Bild um Bild herein:"
+                        </p>
+                        <p><strong>Imperativ:</strong> "Lasset" - Die Augen werden gebeten, weiterhin freundlich Bilder hereinzulassen. Es ist keine Befehlston, sondern eine Bitte an einen treuen Begleiter.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Anapher / Wiederholung:</strong> "Bild um Bild" - Die Reduplikation zeigt die Unmenge an Eindruecken, die ein Leben lang gesammelt wurden. Bild fuer Bild, Moment fuer Moment.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Asyndeton</em> (Auslassung von Bindewoertern) - "Bild um Bild" statt "Bild fuer Bild und Bild" beschleunigt den Rhythmus und vermittelt die Fuelle der Eindruecke.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Einmal werdet ihr verdunkelt sein!"
+                        </p>
+                        <p><strong>Zukunftsaussicht:</strong> "Einmal" - Ein unbestimmter Zeitpunkt in der Zukunft. Nicht morgen, nicht heute, aber irgendwann. Das Wort traegt eine resignierte Gelassenheit.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Euphemismus:</strong> "verdunkelt sein" statt "blind werden" oder "sterben". Der Tod wird als sanftes Verdunkeln beschrieben - ein Licht, das langsam erlischt, nicht als gewaltsames Ende.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Euphemismus</em> - Die Umschreibung des Todes als "Verdunkelung" verharmlost und enttabuisiert das Sterben. Es ist ein sanfter Uebergang, kein Schrecken.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Ausrufezeichen:</strong> Nicht als Schrei, sondern als resignierte Feststellung. Fast wie ein Seufzer der Akzeptanz.</p>
+                    </div>
+
+                    <div style="background: var(--dark); color: var(--cream); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem;">
+                        <p style="color: var(--gold); font-weight: 700; margin-bottom: 0.5rem;">Zusammenfassung Strophe 1:</p>
+                        <p>Das lyrische Ich spricht seine Augen liebevoll an und dankt ihnen fuer ein Leben voller Bilder. Gleichzeitig weiss es um die kommende Verdunkelung - den Tod. Die Strophe verbindet Dankbarkeit mit resignierter Akzeptanz.</p>
+                    </div>
+                </div>
+
+                <!-- STROPHE 2 ANALYSE -->
+                <div class="analysis-card" id="card-strophe2" data-stanza="2">
+                    <h4>Strophe 2 - Vers-fuer-Vers-Analyse</h4>
+                    
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Fallen einst die mueden Lider zu,"
+                        </p>
+                        <p><strong>Konditionalsatz (angenommen):</strong> "einst" - wieder ein unbestimmter Zeitpunkt. Der Sprecher denkt nicht an den konkreten Moment, sondern an das Prinzip des Sterbens.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Personifikation:</strong> "muede Lider" - Die Augenlider sind muede vom langen Leben. Sie haben genug gesehen, genug erlebt. Die Muedigkeit ist nicht negativ, sondern verdient.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Personifikation</em> - Die Lider werden als lebendige Wesen dargestellt, die muede sind und zur Ruhe kommen wollen. Es ist ein Bild des natuerlichen, erloesenden Schlafens.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Vergleich zu Strophe 1:</strong> Waehrend Strophe 1 noch von "verdunkelt sein" spricht (passiv), beschreibt Strophe 2 den Moment des Sterbens aktiv: Die Lider fallen zu. Es wird konkreter, koerperlicher.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Loescht ihr aus, dann hat die Seele Ruh;"
+                        </p>
+                        <p><strong>Metapher:</strong> "Loescht ihr aus" - Die Augen werden mit Lichtquellen gleichgesetzt (wie Kerzen oder Lampen). Wenn sie ausgehen, ist das Leben vorbei. Es ist ein sanftes Verloeschen, kein ploetzliches Erlischen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Seele als eigenstaendiges Wesen:</strong> Die Seele bekommt ihre Ruhe - als waere sie ein erschoepfter Wanderer, der endlich rasten darf. Der Tod wird zur Erloesung.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Euphemismus</em> - "Ruh" statt "Tod". Die Seele findet nicht das Ende, sondern die Ruhe. Es ist ein klassisches Sterbe-Euphemismus, der den Tod als erloesenden Schlaf zeigt.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Semikolon:</strong> Die Pause nach "Ruh" oeffnet den Raum fuer die naechsten Bilder. Die Seele hat Ruhe - und was tut sie dann?</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Tastend streift sie ab die Wanderschuh',"
+                        </p>
+                        <p><strong>Metapher:</strong> "Wanderschuh'" - Das Leben wird zu einer Wanderung. Die Seele ist die Wandererin, der Koerper ist der Weg. Die Wanderschuhe sind das Symbol fuer das irdische Dasein, das Muehsame, das Anstrengende.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Partizip "tastend":</strong> Die Seele tastet sich vor - sie ist unsicher, vorsichtig, muede. Es ist kein energisches Ausziehen, sondern ein langsames, erschoepftes Abstreifen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Metapher</em> - Das Leben als Wanderung ist ein archetypisches Bild (vgl. Pilgerschaft, Lebensweg). Die Wanderschuhe stehen fuer alle Lasten und Muehen des Lebens, die nun abgelegt werden duerfen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Apostroph:</strong> "Wanderschuh'" statt "Wanderschuhe" - Die gekuerzte Form passt zum Metrum und gibt dem Wort einen leisen, vertrauten Klang.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Legt sich auch in ihre finstre Truh'."
+                        </p>
+                        <p><strong>Metapher:</strong> "finstre Truh'" - Der Sarg / das Grab wird zur dunklen Truhe. Es ist ein hausliches, vertrautes Bild (Truhe = Moebelstueck), das den Tod enttabuisiert. Nicht ein kaltes Grab, sondern eine Truhe zum Ruhen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>"auch" - Inklusion:</strong> Die Seele legt sich "auch" hin - als waere sie nicht allein. Vielleicht denkt der Sprecher an die bereits Verstorbenen, die dort bereits ruhen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Metapher & Euphemismus</em> - Die "finstere Truhe" ist eine sanfte Umschreibung fuer Grab/Tod. Das Bild ist hauslich und warm, nicht furchteinfloessend. Das Diminutiv "Truh'" (Truhe) verstaerkt die Vertrautheit.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Vergleich zu Strophe 1:</strong> Strophe 1 spricht von den Augen, Strophe 2 von der Seele. Der Fokus verschiebt sich vom Koerperlichen (Augen, Lider) zum Geistigen (Seele). Der Tod wird als Befreiung der Seele vom Koerper dargestellt.</p>
+                    </div>
+
+                    <div style="background: var(--dark); color: var(--cream); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem;">
+                        <p style="color: var(--gold); font-weight: 700; margin-bottom: 0.5rem;">Zusammenfassung Strophe 2:</p>
+                        <p>Der Sterbemoment wird als sanftes Einschlafen dargestellt. Die Seele legt die Last des Lebens (Wanderschuh) ab und findet Ruhe in der dunklen Truhe (Grab). Der Tod wird zur Erloesung und Befreiung.</p>
+                    </div>
+                </div>
+
+                <!-- STROPHE 3 ANALYSE -->
+                <div class="analysis-card" id="card-strophe3" data-stanza="3">
+                    <h4>Strophe 3 - Vers-fuer-Vers-Analyse</h4>
+                    
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Noch zwei Fuenklein sieht sie glimmend stehn,"
+                        </p>
+                        <p><strong>Diminutiv:</strong> "Fuenklein" - Wieder eine Verkleinerungsform. Die letzten Lebensfunken sind klein, zart, verletzlich. Das -lein drueckt Zaertlichkeit und Mitleid aus.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Zahl "zwei":</strong> Zwei Funken - fuer zwei Augen. Die Zahl macht das Bild konkret und koerperlich. Es sind nicht viele Funken, nur noch zwei.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Metapher & Hyperbel</em> - Die Augen werden zu Funken, die glimmen. Das ist eine Ueberhoehung (Hyperbel), denn Augen sind keine Funken. Aber poetisch wird das letzte Lebenslicht in den Augen als glimmender Funke sichtbar.</p>
+                        <p style="margin-top: 0.5rem;"><strong>"glimmend":</strong> Nicht hell brennend, sondern glimmend - ein schwaches, flackerndes Licht. Das Wort traegt die ganze Zerbrechlichkeit des Moments.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Wie zwei Sternlein innerlich zu sehn,"
+                        </p>
+                        <p><strong>Vergleich:</strong> "wie zwei Sternlein" - Die Funken werden zu Sternen. Sterne sind ewig, fern, himmlisch. Der Vergleich erhebt das Sterben ins Kosmische, ins Ewige.</p>
+                        <p style="margin-top: 0.5rem;"><strong>"innerlich zu sehn":</strong> Die Sterne sind nicht draussen, sondern "innerlich" - in der Seele, im Inneren des Menschen. Der Tod wird zum inneren Erlebnis, nicht zum aeusseren Ereignis.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Vergleich & Diminutiv</em> - "Sternlein" (nicht Sterne) - wieder die Verkleinerungsform. Die Sterne sind klein, zart, wie die Funken selbst. Der Vergleich verbindet das Irdische (Funken) mit dem Himmlischen (Sterne).</p>
+                        <p style="margin-top: 0.5rem;"><strong>Vergleich zu Strophe 2:</strong> Waehrend Strophe 2 von der Seele spricht, die abstreift und sich hinlegt, zeigt Strophe 3 den Moment des Ausklingens. Es ist ein langsames Verloeschen, kein ploetzliches Ende.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Bis sie schwanken und dann auch vergehn,"
+                        </p>
+                        <p><strong>Verb "schwanken":</strong> Die Funken schwanken - ein unsicheres, wankendes Licht. Das Wort beschreibt den Moment des Umkippens, des Uebergangs vom Sein zum Nichtsein.</p>
+                        <p style="margin-top: 0.5rem;"><strong>"dann auch" - Unausweichlichkeit:</strong> Es ist unvermeidlich. Nicht "vielleicht", sondern "dann auch". Der Tod kommt mit letzter Sicherheit.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Personifikation</em> - Die Funken "vergehen" wie Menschen. Das Wort "vergehen" wird normalerweise fuer Lebewesen verwendet. Die Funken werden lebendig, haben ein kleines Leben, das endet.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Alliteration:</strong> "schwanken" - das sch-Alliteration erzeugt einen weichen, schwankenden Klang, der das Bild unterstuetzt.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Wie von eines Falters Fluegelwehn."
+                        </p>
+                        <p><strong>Vergleich:</strong> "wie von eines Falters Fluegelwehn" - Der letzte Atemzug, das letzte Verloeschen wird mit dem Fluegelschlag eines Falters verglichen. Ein Falter ist zart, zerbrechlich, kurzlebig - ein perfektes Bild fuer die Vergaenglichkeit.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Genitiv "eines Falters":</strong> Der unbestimmte Artikel macht den Vergleich allgemeingueltig. Es ist nicht ein bestimmter Falter, sondern das Prinzip der Zerbrechlichkeit selbst.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Vergleich & Alliteration</em> - "Falters Fluegelwehn" - die F-Alliteration erzeugt einen leisen, fluesternden Klang. Das Wort "Fluegelwehn" selbst ist poetisch und veraltet (statt "Fluegelschlag"), was dem Bild eine elegische Qualitaet verleiht.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Symbolik:</strong> Der Falter ist ein klassisches Symbol fuer die Seele (Psyche = griechisch fuer Schmetterling/Seele) und fuer die Kurzlebigkeit des Schoenen. Der Vergleich verbindet Tod und Schoenheit.</p>
+                    </div>
+
+                    <div style="background: var(--dark); color: var(--cream); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem;">
+                        <p style="color: var(--gold); font-weight: 700; margin-bottom: 0.5rem;">Zusammenfassung Strophe 3:</p>
+                        <p>Die letzten Lebensfunken (Augen) werden als Sternlein und als glimmendes Licht beschrieben, das langsam verloescht. Der Vergleich mit dem Fluegelschlag eines Falters macht den Tod zu einem zarten, fast schoenen Moment. Die Strophe ist die poetischste und zarteste des Gedichts.</p>
+                    </div>
+                </div>
+
+                <!-- STROPHE 4 ANALYSE -->
+                <div class="analysis-card" id="card-strophe4" data-stanza="4">
+                    <h4>Strophe 4 - Vers-fuer-Vers-Analyse</h4>
+                    
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Doch noch wandl' ich auf dem Abendfeld,"
+                        </p>
+                        <p><strong>Konjunktion "Doch":</strong> Ein ueberraschender Einschnitt. Nach drei Strophen des Todesgedankens kommt ein "Aber". Der Sprecher kehrt ins Hier und Jetzt zurueck.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Metapher:</strong> "Abendfeld" - Das Leben wird zu einem Feld, das man durchwandert. Der Abend steht fuer die spaete Lebensphase. Es ist ein weites, offenes Bild - nicht eng und bedrohlich, sondern frei und schoen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Metapher & Apostroph</em> - "wandl' ich" (ich wandele) - das verkuerzte Verb erzeugt einen hymnischen, fast biblischen Ton. Das "Abendfeld" verbindet Natur (Feld) mit Zeit (Abend) zu einem Symbol fuer die Lebensabendphase.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Vergleich zu Strophe 1-3:</strong> Die ersten drei Strophen sprechen im Futur ("werdet", "fallen", "vergehn"). Strophe 4 kehrt ins Praesens zurueck ("wandl' ich"). Der Sprecher lebt JETZT, nicht in der Zukunft.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Nur dem sinkenden Gestirn gesellt;"
+                        </p>
+                        <p><strong>"Nur" - Einsamkeit:</strong> "Nur dem sinkenden Gestirn gesellt" - Der Sprecher ist allein, nur begleitet von der untergehenden Sonne. Es ist ein Bild der Einsamkeit, aber auch der Wuerde.</p>
+                        <p style="margin-top: 0.5rem;"><strong>"sinkende Gestirn":</strong> Die Sonne sinkt - ein weiteres Bild fuer das Ende (vgl. untergehende Sonne = Tod). Aber das Gestirn ist majestaetisch, nicht traurig. Der Sprecher gesellt sich ihm, statt es zu beklagen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Metapher & Inversion</em> - "Nur dem sinkenden Gestirn gesellt" statt "Ich bin nur mit dem sinkenden Gestirn gesellt". Die Inversion (umgestellte Wortfolge) erzeugt einen erhoehten, poetischen Ton und betont das "Nur".</p>
+                        <p style="margin-top: 0.5rem;"><strong>Semikolon:</strong> Die Pause oeffnet den Raum fuer den folgenden Imperativ. Es ist ein Moment der Besinnung, bevor der Sprecher zum Handeln auffordert.</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Trinkt, o Augen, was die Wimper haelt,"
+                        </p>
+                        <p><strong>Imperativ:</strong> "Trinkt" - Ein hymnischer, leidenschaftlicher Aufruf. Die Augen sollen trinken, nicht nur sehen. Das Wort "trinken" impliziert Genuss, Intensitaet, Hingabe.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Apostrophe:</strong> "o Augen" - Die direkte Anrede mit "o" erzeugt einen hymnischen, fast religioesen Ton. Es ist eine Anrufung, ein Gebet an die eigenen Augen.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Metapher & Hyperbel</em> - "was die Wimper haelt" - Die Wimper wird zur Schranke, zum Behaelter. Das Bild ist absurd (Wimpern halten nichts), aber poetisch ueberhoeht. Es meint: So viel wie nur irgend moeglich - bis zum letzten Tropfen, bis zur letzten Wimper.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Vergleich zu Strophe 1:</strong> In Strophe 1 heisst es "Gebt mir... holden Schein" (die Augen geben). In Strophe 4 heisst es "Trinkt, o Augen" (die Augen nehmen). Der Sprecher wechselt vom Passiven (Empfangen) zum Aktiven (Fordern).</p>
+                    </div>
+
+                    <div style="background: rgba(201,168,76,0.1); padding: 1.2rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem;">
+                            "Von dem goldnen Ueberfluss der Welt!"
+                        </p>
+                        <p><strong>Adjektiv "goldnen":</strong> Gold ist das Symbol fuer Wert, Schoenheit, Ewigkeit. Die Welt ist nicht nur schoen, sondern golden - sie strahlt, sie ist kostbar.</p>
+                        <p style="margin-top: 0.5rem;"><strong>"Ueberfluss":</strong> Nicht nur genug, sondern Ueberfluss. Die Welt bietet mehr, als man aufnehmen kann. Es ist ein Bild der Fuelle, der Generositaet des Lebens.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Stilfigur:</strong> <em>Hyperbel & Metapher</em> - "goldner Ueberfluss" ist eine starke Ueberhoehung. Die Welt wird zu einem goldenen Strom, aus dem man schoepfen kann. Das Bild ist materialistisch (Gold) und spirituell (Ueberfluss) zugleich.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Ausrufezeichen:</strong> Das einzige Ausrufezeichen im Gedicht (ausser dem resignierten "verdunkelt sein!" in Strophe 1). Hier ist es ein Jubelruf, ein Hymnus auf das Leben.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Carpe diem:</strong> Dieser Vers ist die Essenz der carpe-diem-Haltung: Nutze die Zeit, trinke das Leben aus, solange du kannst. Der Tod ist unvermeidlich (Strophen 1-3), aber solange wir leben, sollen wir leben (Strophe 4).</p>
+                    </div>
+
+                    <div style="background: var(--dark); color: var(--cream); padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem;">
+                        <p style="color: var(--gold); font-weight: 700; margin-bottom: 0.5rem;">Zusammenfassung Strophe 4:</p>
+                        <p>Die letzte Strophe kehrt ueberraschend ins Leben zurueck. Statt in Melancholie zu verharren, ruft das Ich dazu auf, die verbleibende Zeit intensiv zu nutzen. Der Imperativ "Trinkt" ist ein hymnischer Aufruf zur carpe-diem-Haltung - ein letztes, trunkenes Schoepfen aus dem goldnen Ueberfluss der Welt.</p>
+                    </div>
+                </div>
+
+                <div class="analysis-card" id="card-interpretation">
+                    <h4>Gesamtdeutung & Strophenvergleich</h4>
+                    
+                    <p style="margin-bottom: 1rem;">
+                        Das Gedicht thematisiert die <strong>Vergaenglichkeit des menschlichen Lebens</strong> und den bewussten Umgang mit ihr. 
+                        Der Sprecher befindet sich im metaphorischen Abend seines Lebens und sieht dem Tod gelassen entgegen.
+                    </p>
+
+                    <p style="margin: 1rem 0; font-weight: 600; color: var(--dark);">Aufbau der Strophen im Vergleich:</p>
+                    <ul>
+                        <li><strong>Strophe 1:</strong> Dankbarkeit fuer das Sehen + resignierte Akzeptanz des Todes (Futur: "werdet")</li>
+                        <li><strong>Strophe 2:</strong> Der Moment des Sterbens als sanftes Einschlafen (Konditional: "Fallen... dann")</li>
+                        <li><strong>Strophe 3:</strong> Das Ausklingen des Lebens als zarter Prozess (Praesens: "sieht", "vergehn")</li>
+                        <li><strong>Strophe 4:</strong> Rueckkehr ins Leben, carpe-diem-Aufruf (Praesens: "wandl'", Imperativ: "Trinkt")</li>
+                    </ul>
+
+                    <p style="margin: 1rem 0; font-weight: 600; color: var(--dark);">Entwicklung der Bilder:</p>
+                    <ul>
+                        <li><strong>Licht-Metaphorik:</strong> "holden Schein" (Strophe 1) -> "Loescht ihr aus" (Strophe 2) -> "Fuenklein... glimmend" (Strophe 3) -> "goldnen Ueberfluss" (Strophe 4). Das Licht wird erst gedimmt, dann ausgeloescht, dann wieder golden.</li>
+                        <li><strong>Bewegungs-Metaphorik:</strong> "Bild um Bild herein" (Strophe 1) -> "Wanderschuh" (Strophe 2) -> "schwanken... vergehn" (Strophe 3) -> "wandl' ich auf dem Abendfeld" (Strophe 4). Die Bewegung geht vom Passiven (Empfangen) zum Aktiven (Wandern, Trinken).</li>
+                        <li><strong>Raum-Metaphorik:</strong> "Fensterlein" (Strophe 1, Oeffnung) -> "finstre Truh'" (Strophe 2, Enge) -> "innerlich" (Strophe 3, Innen) -> "Abendfeld" (Strophe 4, Weite). Der Raum wechselt von eng zu weit, von dunkel zu golden.</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem;">
+                        Besonders bemerkenswert ist die <strong>Wende in der letzten Strophe</strong>: Statt in Melancholie zu verharren, 
+                        ruft das Ich dazu auf, die verbleibende Zeit intensiv zu nutzen. Der Imperativ "Trinkt, o Augen" ist ein hymnischer 
+                        Aufruf zur <strong>carpe diem</strong>-Haltung - ein letztes, trunkenes Schoepfen aus dem goldnen Ueberfluss der Welt.
+                    </p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>Kurz gesagt:</strong> Jeder Vers fuehrt entweder zur Erkenntnis der eigenen Vergaenglichkeit oder zur Aufforderung, 
+                        das Leben bewusst wahrzunehmen. Die ersten drei Strophen beschreiben den Tod, die vierte kehrt ueberraschend ins Leben zurueck.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Zentrale Aussage</h4>
+                    <p>
+                        Kellers Abendlied ist ein Meisterwerk der spaeten Lyrik, das den Tod nicht als bedrohlichen Gegner, sondern als natuerlichen 
+                        Abschluss des Lebens akzeptiert. Die scheinbar widerspruechliche Verbindung von melancholischer Vergaenglichkeitsreflexion und 
+                        lebensbejahendem Hymnus zeigt Kellers reife Weltanschauung: <strong>Der Tod gibt dem Leben erst seinen Wert.</strong> 
+                        Das Gedicht steht damit in der Tradition der <em>vanitas</em>-Meditation, loest sich jedoch von deren moralisierendem Unterton 
+                        und feiert stattdessen die Schoenheit des Augenblicks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+'''
+
+# Now update the JavaScript to handle the new card IDs
+# Find and replace the highlightStanza function
+old_js = '''function highlightStanza(num) {
+            clearHighlight();
+            
+            document.querySelectorAll(`.poem-stanza[data-stanza="${num}"]`).forEach(stanza => {
+                stanza.classList.add('active');
+            });
+            
+            const cardMap = {
+                1: 'card-form',
+                2: 'card-style', 
+                3: 'card-content',
+                4: 'card-interpretation'
+            };
+            
+            const cardId = cardMap[num];
+            if (cardId) {
+                const card = document.getElementById(cardId);
+                if (card) card.classList.add('highlighted');
+            }
+        }'''
+
+new_js = '''function highlightStanza(num) {
+            clearHighlight();
+            
+            document.querySelectorAll(`.poem-stanza[data-stanza="${num}"]`).forEach(stanza => {
+                stanza.classList.add('active');
+            });
+            
+            const cardMap = {
+                1: 'card-strophe1',
+                2: 'card-strophe2', 
+                3: 'card-strophe3',
+                4: 'card-strophe4'
+            };
+            
+            const cardId = cardMap[num];
+            if (cardId) {
+                const card = document.getElementById(cardId);
+                if (card) {
+                    card.classList.add('highlighted');
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }'''
+
+full_html = before + new_abendlied + after
+full_html = full_html.replace(old_js, new_js)
+
+# Also need to remove the old onmouseenter/onmouseleave from analysis cards that reference old card IDs
+# The old cards had: onmouseenter="highlightStanza(1)" onmouseleave="clearHighlight()"
+# We need to remove these from the new cards since they don't exist anymore
+# Actually the new cards don't have these attributes, so we're fine
+
+# Let's also add some CSS for the verse analysis boxes
+# Find the style section and add new styles
+style_addition = '''
+        .verse-box {
+            background: rgba(201,168,76,0.1);
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--gold);
+        }
+        .verse-box p:first-child {
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+'''
+
+# Insert before the closing </style>
+full_html = full_html.replace('</style>', style_addition + '</style>')
+
+# Write the file
+with open('/mnt/agents/output/gottfried_keller_praesentation.html', 'w', encoding='utf-8') as f:
+    f.write(full_html)
+
+print(f"File written: {len(full_html)} chars")
+print(f"File size: {len(full_html.encode('utf-8'))} bytes")
