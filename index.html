@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gottfried Keller – Leben, Schaffen & Lyrik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c9a84c;
+            --dark: #1a1a2e;
+            --cream: #f5f0e8;
+            --warm: #2d2d44;
+            --accent: #8b7355;
+            --text: #333344;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-link {
+            color: var(--cream);
+            text-decoration: none;
+            padding: 0 30px;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 60%;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding-top: 60px;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--warm) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover;
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--cream);
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .hero-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
+        }
+
+        /* Content Containers */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--accent);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* Biography */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .bio-image {
+            position: sticky;
+            top: 100px;
+        }
+
+        .bio-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .bio-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .bio-image-caption {
+            text-align: center;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .bio-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin: 2rem 0 1rem;
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        .bio-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .bio-text p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .timeline-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Poetry Analysis */
+        .poem-section {
+            background: linear-gradient(180deg, var(--cream) 0%, #e8e0d4 100%);
+            padding: 4rem 0;
+        }
+
+        .poem-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poem-container::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15rem;
+            color: var(--gold);
+            opacity: 0.15;
+            line-height: 1;
+        }
+
+        .poem-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .poem-author {
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .poem-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 2.2;
+            color: var(--dark);
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .poem-stanza {
+            margin-bottom: 1.5rem;
+        }
+
+        .poem-stanza:last-child {
+            margin-bottom: 0;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .analysis-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--gold);
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .analysis-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .analysis-card h4 .icon {
+            font-size: 1.6rem;
+        }
+
+        .analysis-card p, .analysis-card ul {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .analysis-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .analysis-card ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .analysis-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .highlight-box h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bio-image {
+                position: relative;
+                top: 0;
+                max-width: 400px;
+                margin: 0 auto 2rem;
+            }
+            
+            .nav-link {
+                padding: 0 15px;
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+            }
+            
+            .poem-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .poem-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Image gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text);
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+            margin: 3rem auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <button class="nav-link active" onclick="showSection('start')">Startseite</button>
+            <button class="nav-link" onclick="showSection('biografie')">Biografie</button>
+            <button class="nav-link" onclick="showSection('abendlied')">„Abendlied"</button>
+        </div>
+    </nav>
+
+    <!-- STARTSEITE -->
+    <section id="start" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Gottfried Keller</h1>
+                <p class="hero-subtitle">Dichter des Realismus</p>
+                <p class="hero-quote">„Wer die Welt nicht mit seinen Augen sieht, sieht sie überhaupt nicht."</p>
+                <p style="font-size: 0.9rem; opacity: 0.7;">1819 – 1890</p>
+            </div>
+            <div class="scroll-indicator">↓</div>
+        </div>
+
+        <div class="container">
+            <div class="section-header">
+                <h2>Willkommen</h2>
+                <p>Entdecken Sie Leben und Werk des bedeutendsten Schweizer Dichters des 19. Jahrhunderts</p>
+            </div>
+
+            <p class="intro-text">
+                Gottfried Keller zählt zu den herausragenden Gestalten der deutschsprachigen Literatur. 
+                Als Romancier, Novellist und Lyriker prägte er den literarischen Realismus nachhaltig. 
+                Diese Website führt Sie durch sein bewegtes Leben und analysiert sein berührendes Gedicht 
+                <em>„Abendlied"</em> – ein Meisterwerk der späten Lyrik, das die Vergänglichkeit des Lebens 
+                mit hymnischer Gelassenheit besingt.
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="gallery">
+                <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/2a3aff3e8c53edbb43a5311567dcbe5c3b666077.jpg" alt="Gottfried Keller Porträt 1872">
+                <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/66259e072f3a4e6ed305959a4e4c472d6056bc73.jpeg" alt="Gottfried Keller Fotografie">
+                <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/369b9bf4d58e82dce77a7ab9bb0e615fe572371e.jpg" alt="Gottfried Keller Porträt">
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-style: italic; color: var(--accent); font-size: 1.1rem;">
+                    „Die drei oder vier größten Prosaiker der deutschen Sprache"<br>
+                    <span style="font-size: 0.9rem;">— Walter Benjamin über Gottfried Keller</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIOGRAFIE -->
+    <section id="biografie" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Leben und Schaffen</h2>
+                <p>Vom Maler zum Dichter – eine Biografie voller Wendungen</p>
+            </div>
+
+            <div class="bio-grid">
+                <div class="bio-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/upload.wikimedia.org/2c8f289b4cce9c0d1602b44d684b21a09d9f2fd8.jpg" alt="Gottfried Keller Porträt">
+                    <p class="bio-image-caption">Gottfried Keller (1819–1890)<br>Schweizer Dichter und Staatsschreiber</p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn.webshopapp.com/a5ad3311e40ad42ddec823cf3b3a8e8b0fccaad9.jpg" alt="Romantische Landschaft" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                        <p class="bio-image-caption">Romantische Landschaftsmalerei –<br>Kellers erste künstlerische Leidenschaft</p>
+                    </div>
+                </div>
+
+                <div class="bio-text">
+                    <h3>Kindheit und Jugend in Zürich</h3>
+                    <p>
+                        Gottfried Keller wurde am <strong>19. Juli 1819</strong> im Haus „Zum goldenen Winkel" am Neumarkt in Zürich geboren. 
+                        Er war das zweite von sechs Kindern des Drechslermeisters Rudolf Keller und der Arzttochter Elisabeth Scheuchzer. 
+                        Vier seiner Geschwister starben bereits im Kleinkindalter – nur seine Schwester Regula überlebte. 
+                        Als der Vater 1824 im Alter von nur 33 Jahren verstarb, geriet die Familie in finanzielle Bedrängnis. 
+                        Die Mutter heiratete in zweiter Ehe, ließ sich jedoch bereits 1834 wieder scheiden.
+                    </p>
+                    <p>
+                        Keller besuchte die Armenschule und später das Landknabeninstitut. Seine Begabung für Malerei und Literatur zeigte sich früh: 
+                        Er verfasste kleine Theaterstücke und begann mit der Aquarellmalerei. 1833 wechselte er an die Kantonale Industrieschule, 
+                        wurde jedoch 1834 als angeblicher Anführer eines Schüleraufstands verwiesen. Daraufhin entschloss er sich, Maler zu werden.
+                    </p>
+
+                    <h3>Der Weg des Malers</h3>
+                    <p>
+                        Von 1834 bis 1837 absolvierte Keller eine Lehre als Vedutenmaler in Zürich. 
+                        1840 zog er nach München, um an der Königlichen Akademie der Künste zu studieren – doch ohne Empfehlungen gelangte er nie 
+                        zu einer geregelten Ausbildung. Als „lustiges Kellerchen" lebte er in der kleinen Schweizer Kolonie, bis eine Typhuserkrankung 
+                        und finanzielle Probleme ihn 1842 nach Zürich zurücktrieben. Seine Rückkehr gestaltete sich als makabre Burleske: 
+                        Er verkohlte ein Bild, ein anderes traf verschmutzt ein und blieb unverkäuflich. Als „verkrachte Existenz" kehrte er heim.
+                    </p>
+
+                    <h3>Durchbruch als Dichter</h3>
+                    <p>
+                        Ab 1843 konzentrierte sich Keller auf die Lyrik. Durch Georg Herweghs Gedichte inspiriert, verfasste er Natur- und Liebesgedichte. 
+                        1845 erschien sein erster Gedichtband <em>„Lieder eines Autodidakten"</em>. 1848 zog er nach Heidelberg, um Literaturgeschichte zu studieren. 
+                        Dort lernte er Ludwig Feuerbach kennen, dessen Philosophie sein Weltbild nachhaltig prägte. Eine unglückliche Liebe zu Johanna Kapp 
+                        inspirierte ihn zu einigen seiner schönsten Liebesgedichte, darunter die Verse auf die Heidelberger Alte Brücke.
+                    </p>
+
+                    <h3>Berlin und literarischer Durchbruch</h3>
+                    <p>
+                        Von 1850 bis 1855 lebte Keller in Berlin. Dort entstand sein Hauptwerk <em>„Der grüne Heinrich"</em> (1854/55) sowie Teile des Novellenzyklus 
+                        <em>„Die Leute von Seldwyla"</em>. Trotz des künstlerischen Erfolgs blieb er finanziell abhängig. 1855 kehrte er nach Zürich zurück. 
+                        1861 wurde er überraschend zum Ersten Staatsschreiber des Kantons Zürich gewählt – ein Amt, das ihm endlich Sicherheit bot. 
+                        1876 legte er das Amt nieder und lebte als freier Schriftsteller.
+                    </p>
+
+                    <h3>Späte Jahre und Tod</h3>
+                    <p>
+                        In den folgenden Jahren entstanden die <em>„Zürcher Novellen"</em>, die überarbeitete Fassung des <em>„Grünen Heinrich"</em> sowie der Roman 
+                        <em>„Martin Salander"</em> (1886). Friedrich Nietzsche nannte die <em>„Leute von Seldwyla"</em> einen „Schatz der deutschen Prosa". 
+                        Keller blieb zeitlebens unverheiratet. Seine Verlobte Luise Scheidegger nahm sich 1866 das Leben. 
+                        Am <strong>15. Juli 1890</strong> starb Gottfried Keller in Zürich. Sein Begräbnis wurde zum Staatsakt.
+                    </p>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-year">1819</span>
+                            <span class="timeline-content">Geburt in Zürich</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1824</span>
+                            <span class="timeline-content">Tod des Vaters, finanzielle Not</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1834</span>
+                            <span class="timeline-content">Verweis von der Industrieschule, Beginn der Malerlehre</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1840–42</span>
+                            <span class="timeline-content">Aufenthalt in München, Scheitern als Maler</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1845</span>
+                            <span class="timeline-content">Erstveröffentlichung: „Lieder eines Autodidakten"</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1848–49</span>
+                            <span class="timeline-content">Studium in Heidelberg, Begegnung mit Feuerbach</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1850–55</span>
+                            <span class="timeline-content">Berliner Jahre, „Der grüne Heinrich"</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1861</span>
+                            <span class="timeline-content">Wahl zum Staatsschreiber von Zürich</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1876</span>
+                            <span class="timeline-content">Rücktritt als Staatsschreiber, freier Schriftsteller</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">1890</span>
+                            <span class="timeline-content">Tod in Zürich</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABENDLIED ANALYSE -->
+    <section id="abendlied" class="section">
+        <div class="poem-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>„Abendlied"</h2>
+                    <p>Gedichtanalyse – Vergänglichkeit und hymnische Gelassenheit</p>
+                </div>
+
+                <div class="poem-container">
+                    <h3 class="poem-title">Abendlied</h3>
+                    <p class="poem-author">Gottfried Keller (1879)</p>
+                    
+                    <div class="poem-text">
+                        <div class="poem-stanza">
+                            Augen, meine lieben Fensterlein,<br>
+                            Gebt mir schon so lange holden Schein,<br>
+                            Lasset freundlich Bild um Bild herein:<br>
+                            Einmal werdet ihr verdunkelt sein!
+                        </div>
+                        <div class="poem-stanza">
+                            Fallen einst die müden Lider zu,<br>
+                            Löscht ihr aus, dann hat die Seele Ruh;<br>
+                            Tastend streift sie ab die Wanderschuh',<br>
+                            Legt sich auch in ihre finstre Truh'.
+                        </div>
+                        <div class="poem-stanza">
+                            Noch zwei Fünklein sieht sie glimmend stehn,<br>
+                            Wie zwei Sternlein innerlich zu sehn,<br>
+                            Bis sie schwanken und dann auch vergehn,<br>
+                            Wie von eines Falters Flügelwehn.
+                        </div>
+                        <div class="poem-stanza">
+                            Doch noch wandl' ich auf dem Abendfeld,<br>
+                            Nur dem sinkenden Gestirn gesellt;<br>
+                            Trinkt, o Augen, was die Wimper hält,<br>
+                            Von dem goldnen Überfluß der Welt!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4><span class="icon">📐</span> Äußere Form</h4>
+                        <ul>
+                            <li><strong>Strophen:</strong> 4 Strophen à 4 Verse</li>
+                            <li><strong>Metrum:</strong> Vierhebiger Jambus mit männlicher Kadenz</li>
+                            <li><strong>Reimschema:</strong> Haufenreim (aaaa / bbbb / cccc / dddd)</li>
+                            <li><strong>Silbenzahl:</strong> Jeweils 9 Silben pro Vers</li>
+                            <li><strong>Epoche:</strong> Realismus (mit romantischen Elementen)</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">
+                            Der Haufenreim erzeugt einen harmonischen, fast hymnischen Klang, der der meditativen Stimmung des Gedichts entspricht. 
+                            Die regelmäßige Form spiegelt die Gelassenheit wider, mit der der Sprecher dem Tod entgegensieht.
+                        </p>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4><span class="icon">✨</span> Sprachlich-stilistische Besonderheiten</h4>
+                        <ul>
+                            <li><strong>Diminutive:</strong> „Fensterlein", „Sternlein" – verleihen dem Gedicht Zärtlichkeit und Intimität</li>
+                            <li><strong>Metapher:</strong> Die Augen als „liebe Fensterlein" – Bild der Wahrnehmung als Fenster zur Welt</li>
+                            <li><strong>Symbolik:</strong> „Wanderschuh" = irdisches Leben; „finstre Truh" = Grab/Tod; „Falter" = Vergänglichkeit</li>
+                            <li><strong>Personifikation:</strong> Die Seele handelt eigenständig (streift ab, legt sich)</li>
+                            <li><strong>Optische Bilder:</strong> „goldner Überfluß", „Fünklein glimmend" – Licht-Dunkel-Kontrast</li>
+                            <li><strong>Imperative:</strong> „Trinkt, o Augen" – Appell an die eigene Wahrnehmung</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4><span class="icon">📖</span> Inhaltlicher Aufbau</h4>
+                        <ul>
+                            <li><strong>1. Strophe:</strong> Anrede an die Augen als „Fensterlein" – Dankbarkeit für das bisherige Sehen und Ahnung des Endes</li>
+                            <li><strong>2. Strophe:</strong> Der Tod als Erlösung – die Seele findet Ruhe, legt die „Wanderschuh" ab</li>
+                            <li><strong>3. Strophe:</strong> Das Erlöschen des Bewusstseins – die letzten Funken verlöschen wie bei einem Falter</li>
+                            <li><strong>4. Strophe:</strong> Rückwendung zum Leben – hymnischer Aufruf, die Welt bis zuletzt zu genießen</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4><span class="icon">💡</span> Deutungsansatz</h4>
+                        <p>
+                            Das Gedicht thematisiert die <strong>Vergänglichkeit des menschlichen Lebens</strong> und den bewussten Umgang mit ihr. 
+                            Der Sprecher befindet sich im metaphorischen „Abend" seines Lebens und sieht dem Tod gelassen entgegen. 
+                            Die Augen – Sinnesorgan des Sehens und Metapher für die Wahrnehmung – werden liebevoll als „Fensterlein" apostrophiert.
+                        </p>
+                        <p style="margin-top: 0.8rem;">
+                            Besonders bemerkenswert ist die <strong>Wende in der letzten Strophe</strong>: Statt in Melancholie zu verharren, 
+                            ruft das Ich dazu auf, die verbleibende Zeit intensiv zu nutzen. Der Imperativ „Trinkt, o Augen" ist ein hymnischer 
+                            Aufruf zur <strong>carpe diem</strong>-Haltung – ein letztes, trunkenes Schöpfen aus dem „goldnen Überfluß der Welt".
+                        </p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🎭 Zentrale Aussage</h4>
+                    <p>
+                        Kellers „Abendlied" ist ein Meisterwerk der späten Lyrik, das den Tod nicht als bedrohlichen Gegner, sondern als natürlichen 
+                        Abschluss des Lebens akzeptiert. Die scheinbar widersprüchliche Verbindung von melancholischer Vergänglichkeitsreflexion und 
+                        lebensbejahendem Hymnus zeigt Kellers reife Weltanschauung: Der Tod gibt dem Leben erst seinen Wert. 
+                        Das Gedicht steht damit in der Tradition der <em>vanitas</em>-Meditation, löst sich jedoch von deren moralisierendem Unterton 
+                        und feiert stattdessen die Schönheit des Augenblicks.
+                    </p>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.joseartgallery.com/46aee9834b17adb29f3088f812bea81cad4a79cb.jpg" alt="Sonnenuntergang Landschaft" style="max-width: 600px; width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
+                    <p class="bio-image-caption">„Doch noch wandl' ich auf dem Abendfeld" –<br>Die Metapher des Abends als Lebensabend</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© Gottfried Keller – Leben, Schaffen & Lyrik | Erstellt für den Deutschunterricht</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Quellen: Gottfried Keller-Gesellschaft, Zentralbibliothek Zürich, Abipur.de, Lyrik.antikoerperchen.de</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
